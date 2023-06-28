@@ -9,9 +9,9 @@ instance = ec2_resource.create_instances(
         InstanceType='t2.micro',
         MinCount=1,
         MaxCount=1,
-        KeyName='labuser3devops',
-        SecurityGroupIds=['sg-079b0d65e8af0d1fd'],
-        SubnetId='subnet-0ed9764e7d7229b7b'
+        KeyName='test2devops',
+        SecurityGroupIds=['sg-079b0d65af0d1fd'],
+        SubnetId='subnet-0ed9764e7d7254629b7b'
      )
 # Access the created instance's ID
 instance_id = instance[0].instance_id
