@@ -1,14 +1,29 @@
 import boto3
+import sys
 
 # Create an EC2 resource
 ec2_resource = boto3.resource('ec2')
+if len(sys.argv) < 2:
+    print("Please provide the instance ID: ")
+    sys.exit(1)
 
-# Retrieve the instance object
-instance = ec2_resource.Instance('i-03233c80d285b1a17')
+instance_id = sys.argv[1]
+instance = ec2_resource.Instance(instance_id)
 
 # Start the instance
-instance.start()
+try:
+    instance.start()
+    print(f"Starting EC2 Instance {instance_id}...")
+    print("Start command sent!")
+except Exception as e:
+    print("Error occurred while starting the instance:", str(e))
 
 # Stop the instance
-#instance.stop()
+# try:
+#     instance.stop()
+#     print(f"Stopping EC2 Instance {instance_id}...")
+#     print("Stop command sent!")
+# except Exception as e:
+#     print("Error occurred while stopping the instance:", str(e))
+
 
