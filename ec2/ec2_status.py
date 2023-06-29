@@ -4,23 +4,18 @@ import sys
 # Create an EC2 client
 ec2_client = boto3.client('ec2')
 
-# Retrieve the instance ID from command-line argument
 if len(sys.argv) < 2:
-    print("Please provide the instance ID as a command-line argument.")
+    print("Please provide the instance ID: ")
     sys.exit(1)
 instance_id = sys.argv[1]
-
-            # Describe instance status
 response = ec2_client.describe_instance_status(
         InstanceIds=[instance_id]
         )
-
-            # Access instance status details
+# Access instance status details
 for instance_status in response['InstanceStatuses']:
     instance_id = instance_status['InstanceId']
     status = instance_status['InstanceState']['Name']
-                            
-                                # Get instance details
+# Get Instance details
 instance_response = ec2_client.describe_instances(
         InstanceIds=[instance_id]
         )
@@ -36,4 +31,3 @@ if reservations:
     print(f"Instance Type: {instance_type}")
     print(f"Platform: {platform}")
     print()
-
