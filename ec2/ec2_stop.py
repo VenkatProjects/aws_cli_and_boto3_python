@@ -10,20 +10,12 @@ if len(sys.argv) < 2:
 instance_id = sys.argv[1]
 instance = ec2_resource.Instance(instance_id)
 
-# Start the instance
+#Stop the instance
 try:
-    instance.start()
-    print(f"Starting EC2 Instance {instance_id}...")
-    print("Start command sent!")
+    instance.stop()
+    print(f"Stopping EC2 Instance {instance_id}...")
+    print("Stop command sent!")
 except Exception as e:
-    print("Error occurred while starting the instance:", str(e))
-
-# Stop the instance
-# try:
-#     instance.stop()
-#     print(f"Stopping EC2 Instance {instance_id}...")
-#     print("Stop command sent!")
-# except Exception as e:
-#     print("Error occurred while stopping the instance:", str(e))
+    print("Error occurred while stopping the instance:", str(e))
 
 
