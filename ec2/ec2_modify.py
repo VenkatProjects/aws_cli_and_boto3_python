@@ -3,10 +3,8 @@ import sys
 
 # Create an EC2 client
 ec2_client = boto3.client('ec2')
-
-# Retrieve the instance ID and instance type from command-line arguments
 if len(sys.argv) < 3:
-    print("Please provide the instance ID and instance type as command-line arguments.")
+    print("Please provide the instance ID and instance type: ")
     sys.exit(1)
 instance_id = sys.argv[1]
 instance_type = sys.argv[2]
